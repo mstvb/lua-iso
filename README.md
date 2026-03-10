@@ -4,18 +4,10 @@ Isometric Lua Game Engine for @fm-labs
 
 ## Contents
 
-- [Features](#features)
 - [Used Libraries](#used-libraries)
 - [Project Links](#project-links)
 - [Authors](#authors)
 - [License](#license)
-
-# Features
-
-#### Generic Features
-- [ ] Engine
-- [ ] Camera
-- [ ] Input Handling
 
 ## Used Libraries
 
@@ -23,9 +15,6 @@ Isometric Lua Game Engine for @fm-labs
 | -----------  | ----------- |
 | class | Class Implementation |
 | match | Switch-Case Statements |
-| moongl | OpenGL Binding in Lua | 
-| moonglfw | GLFW Binding in Lua |
-| moonal | OpenAL Binding in Lua |
 
 ## Project Links
 
