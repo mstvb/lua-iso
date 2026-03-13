@@ -1,12 +1,9 @@
---- Libraries Imports
-local cls = require("libraries.class")
-
 --- Math Imports
 local Vec3 = require("math.vec3")
 local Quat = require("math.quat")
 local Mat4 = require("math.mat4")
 
-local Transform = cls("Transform")
+Transform = {}
 
 --- @class Transform
 ---
@@ -21,7 +18,7 @@ local Transform = cls("Transform")
 --- @field scale Vec3
 ---
 --- Methods
---- @field __init__ fun(position, rotation, scale)
+--- @field new fun(position, rotation, scale)
 --- @field set_position fun(v)
 --- @field set_rotation fun(q)
 --- @field set_scale fun(v)
@@ -32,7 +29,7 @@ local Transform = cls("Transform")
 --- Returns
 --- @return Transform
 ---
-function Transform:__init__(position, rotation, scale)
+function Transform:new(position, rotation, scale)
     self.position = position or Vec3(0,0,0)
     self.rotation = rotation or Quat(0,0,0,1)
     self.scale    = scale    or Vec3(1,1,1)
@@ -121,5 +118,3 @@ function Transform:getMatrix()
 
     return T:mul(R):mul(S)
 end
-
-return Transform

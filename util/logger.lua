@@ -1,5 +1,4 @@
-local cls = require("libraries/class")
-local Logger = cls("Logger")
+Logger = {}
 
 --- @class Logger
 ---
@@ -18,9 +17,11 @@ local Logger = cls("Logger")
 --- Returns
 --- @return Logger
 ---
-function Logger:__init__(prefix, suffix)
+function Logger:new(prefix, suffix)
+    setmetatable({}, self)
     self.prefix = prefix or "[Logger]"
-    self.suffix = suffix or "[%s]":format(os.date("%H:%M:%S"))
+    self.suffix = suffix or string.format("[%s]", os.date("%H:%M:%S"))
+    return self
 end
 
 --- Send Message

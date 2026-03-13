@@ -1,5 +1,4 @@
-local cls = require("libraries/class")
-local Camera = cls("Camera")
+Camera = {}
 
 --- @class Camera
 ---
@@ -16,7 +15,7 @@ local Camera = cls("Camera")
 --- @field viewportHeight number
 ---
 --- Methods
---- @field __init__ fun(config) Class Constructor
+--- @field new fun(config) Class Constructor
 --- @field move fun(dx, dy, dz, dt) Move Camera
 --- @field set fun(x, y, z) Set Camera Position
 --- @field setZoom fun(z) Set Camera Zoom
@@ -25,7 +24,8 @@ local Camera = cls("Camera")
 --- Returns
 --- @return Camera
 ---
-function Camera:__init__(config)
+function Camera:new(config)
+    setmetatable({}, self)
     self.x = config and config.x or 0
     self.y = config and config.y or 0
     self.z = config and config.z or 0
@@ -35,6 +35,7 @@ function Camera:__init__(config)
 
     self.viewportWidth  = config and config.viewportWidth  or 1280
     self.viewportHeight = config and config.viewportHeight or 720
+    return self
 end
 
 --- Move Camera Function

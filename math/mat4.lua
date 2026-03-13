@@ -1,16 +1,15 @@
-local cls = require("libraries.class")
-local Mat4 = cls("Mat4")
+Mat4 = {}
 
 --- @class Mat4
 ---
 --- Parameters
---- @param m array
+--- @param m table
 ---
 --- Attributes
---- @field m array
+--- @field m table
 ---
 --- Methods
---- @field __init__ fun(m) Class Constructor
+--- @field new fun(m) Class Constructor
 --- @field mul fun(b) Multiply
 --- @field translate fun(v) Translate
 --- @field scale fun(v) Scale
@@ -21,13 +20,15 @@ local Mat4 = cls("Mat4")
 --- Returns
 --- @return Mat4
 ---
-function Mat4:__init__(m)
+function Mat4:new(m)
+    setmetatable({}, self)
     self.m = m or {
         1,0,0,0,
         0,1,0,0,
         0,0,1,0,
         0,0,0,1
     }
+    return self
 end
 
 --- Multiply Function
@@ -143,5 +144,3 @@ function Mat4.rotateZ(a)
         0,0,0,1
     })
 end
-
-return Mat4

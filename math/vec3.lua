@@ -1,5 +1,4 @@
-local cls = require("libraries/class")
-local Vec3 = cls('Vec3')
+Vec3 = {}
 
 --- @class Vec3
 ---
@@ -24,10 +23,12 @@ local Vec3 = cls('Vec3')
 --- Returns
 --- @return Vec3
 ---
-function Vec3:__init__(x, y, z)
+function Vec3:new(x, y, z)
+    setmetatable({}, self)
     self.x = x
     self.y = y
     self.z = z
+    return self
 end
 
 function Vec3:add(v)
@@ -57,5 +58,3 @@ end
 function Vec3:__str__()
     return ("Vec3(%f, %f, %f)"):format(self.x, self.y, self.z)
 end
-
-return Vec3

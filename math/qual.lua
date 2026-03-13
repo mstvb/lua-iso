@@ -1,5 +1,4 @@
-local cls = require("libraries.class")
-local Quat = cls("Quat")
+Quat = {}
 
 --- @class Quat
 ---
@@ -16,7 +15,7 @@ local Quat = cls("Quat")
 --- @field w number
 ---
 --- Methods
---- @field __init__ fun(x, y, z, w) Class Constructor
+--- @field new fun(x, y, z, w) Class Constructor
 --- @field normalize fun() Normalize
 --- @field mul fun(q) Multiply
 --- @field fromAxisAngle fun(axis, angle) Apply from Axis | Angle
@@ -25,10 +24,12 @@ local Quat = cls("Quat")
 --- @return Quat
 ---
 function Quat:__init__(x, y, z, w)
+    setmetatable({}, self)
     self.x = x or 0
     self.y = y or 0
     self.z = z or 0
     self.w = w or 1
+    return self
 end
 
 --- Normalize
@@ -73,5 +74,3 @@ function Quat.fromAxisAngle(axis, angle)
     local s = math.sin(half)
     return Quat(axis.x*s, axis.y*s, axis.z*s, math.cos(half))
 end
-
-return Quat
