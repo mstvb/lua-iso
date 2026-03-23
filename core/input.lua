@@ -37,23 +37,6 @@ function Input:new()
 end
 
 --- Adds a new action to the input system.
----
---- Parameters
---- key: string - The key to bind the action to.
---- action: function - The function to execute when the key is pressed.
----
---- Attributes
---- self - The Input instance containing the key-action mappings.
---- 
---- Returns
---- Input - A new instance of the Input class.
---- 
-function Input:new()
-    setmetatable({}, self)
-    return self
-end
-
---- Adds a new action to the input system.
 --- 
 --- Parameters
 --- key: string - The key to bind the action to.
@@ -91,7 +74,8 @@ end
 --- self - The Input instance containing the key-action mappings.
 ---
 --- Returns
---- function - The function associated with the key, or nil if no action is bound to the
+--- function - The action associated with the specified key, or nil if no action is bound to
+--- the key.
 ---
 function Input:getAction(key)
     return self[key]
@@ -105,7 +89,7 @@ end
 ---
 function Input:update()
     for key, action in pairs(self) do
-        if type(action) == "function" and love.keyboard.isDown(key) then
+        if love.keyboard.isDown(key) then
             action()
         end
     end
