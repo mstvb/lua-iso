@@ -24,7 +24,7 @@ Render = {}
 --- Render - A new instance of the Render class.
 --- 
 function Render:new()
-    setmetatable({}, self)
+    local o = setmetatable({}, { __index = Render })
     self.objects = {}
     return self
 end
@@ -88,3 +88,5 @@ function Render:draw()
         object:draw()
     end
 end
+
+return Render

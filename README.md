@@ -1,18 +1,32 @@
-# lua-libs
+# lua-iso
 
-Isometric Lua Game Engine for @fm-labs
+Isometric Game Library for @fm-labs
 
-## Contents
+## Table of Contents
 
 - [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Usage](#usage)
 - [Project Links](#project-links)
 - [Authors](#authors)
 
 ## Dependencies
 
-> LÖVE - 2D Game Framework
-* [Website](https://love2d.org)
-* [Documentation](https://www.love2d.org/wiki)
+> LÖVE
+* [Website](link)
+* [Documentation](link)
+
+## Installation
+
+1. Install Dependencies
+
+2. Clone Repository
+
+## Usage
+
+- Copy a Demo from `/demos` in `main.lua`
+
+- Run `love .`
 
 ## Project Links
 
