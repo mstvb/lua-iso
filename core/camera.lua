@@ -29,9 +29,9 @@ Camera = {}
 ---
 function Camera:new(x, y, scale)
     local o = setmetatable({}, { __index = Camera })
-    self.x = x
-    self.y = y
-    self.scale = scale
+    o.x = x
+    o.y = y
+    o.scale = scale
     return o
 end
 
