@@ -35,7 +35,7 @@ end
 
 function Ball:draw()
     -- Draw ball as a circle
-    local sx, sy = cam:toScreen(self.x, self.y)
+    local sx, sy = cam:to_screen(self.x, self.y)
     love.graphics.setColor(self.color)
     love.graphics.circle("fill", sx, sy, self.radius * cam.scale)
     love.graphics.setColor(1, 1, 1) -- Reset to white
@@ -65,11 +65,11 @@ function love.load()
     end
 
     -- Camera controls
-    input:addAction('w', function() cam:move(0, -5) end)
-    input:addAction('s', function() cam:move(0, 5) end)
-    input:addAction('a', function() cam:move(-5, 0) end)
-    input:addAction('d', function() cam:move(5, 0) end)
-    input:addAction('+', function() cam:setScale(cam.scale + 0.01) end)
+    input:addAction('w', function() cam:set_position(0, -5) end)
+    input:addAction('s', function() cam:set_position(0, 5) end)
+    input:addAction('a', function() cam:set_position(-5, 0) end)
+    input:addAction('d', function() cam:set_position(5, 0) end)
+    input:addAction('+', function() cam:set_scale(cam.scale + 0.01) end)
     input:addAction('-', function() cam:setScale(cam.scale - 0.01) end)
 
     -- Reset balls
@@ -104,13 +104,13 @@ function love.draw()
     -- Draw background grid
     love.graphics.setColor(0.2, 0.2, 0.2, 0.5)
     for x = 0, 800, 50 do
-        local sx1, sy1 = cam:toScreen(x, 0)
-        local sx2, sy2 = cam:toScreen(x, 600)
+        local sx1, sy1 = cam:to_screen(x, 0)
+        local sx2, sy2 = cam:to_screen(x, 600)
         love.graphics.line(sx1, sy1, sx2, sy2)
     end
     for y = 0, 600, 50 do
-        local sx1, sy1 = cam:toScreen(0, y)
-        local sx2, sy2 = cam:toScreen(800, y)
+        local sx1, sy1 = cam:to_screen(0, y)
+        local sx2, sy2 = cam:to_screen(800, y)
         love.graphics.line(sx1, sy1, sx2, sy2)
     end
     love.graphics.setColor(1, 1, 1)

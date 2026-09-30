@@ -21,10 +21,10 @@ function love.load()
     love.window.setTitle("Input Demo")
 
     -- Example input bindings
-    input:addAction('w', function () player:move(0, -player.speed) end)
-    input:addAction('s', function () player:move(0, player.speed) end)
-    input:addAction('a', function () player:move(-player.speed, 0) end)
-    input:addAction('d', function () player:move(player.speed, 0) end)
+    input:addAction('w', function () player:set_position(0, -player.speed) end)
+    input:addAction('s', function () player:set_position(0, player.speed) end)
+    input:addAction('a', function () player:set_position(-player.speed, 0) end)
+    input:addAction('d', function () player:set_position(player.speed, 0) end)
     input:addAction('escape', function() love.event.quit() end) 
 end
 

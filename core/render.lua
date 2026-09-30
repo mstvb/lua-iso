@@ -1,62 +1,91 @@
---- @todo: Isometric Rendering Class
 Render = {}
 
---- @class Render
---- 
---- Attributes
---- self - The Render instance containing the list of objects to render.
---- objects - A table containing all objects to be rendered. Each object should have update() and draw() methods.
---- 
---- Methods
---- new() - Creates a new Render instance.
---- add(object) - Adds an object to the render list.
---- remove(object) - Removes an object from the render list.
---- update() - Updates all objects in the render list.
---- draw() - Draws all objects in the render list.
---- 
+--[[
+Module / Class to manage Rendering from Objects in Isometric
 
---- New Render instance.
---- 
---- Attributes
---- self - The Render instance containing the list of objects to render.
---- 
---- Returns
---- Render - A new instance of the Render class.
---- 
+Attributes
+----------
+objects : table
+    List / Table for Objects to Render
+
+Methods
+-------
+new()
+    Create new Instance of Render
+add(object)
+    Add Object to Objects for Rendering
+remove(object)
+    Remove Object from Objects for Rendering
+update()
+    Update Objects with Update Function from every Object
+draw()
+    Draw Objects
+
+Returns
+-------
+Render
+    A Instance of Render Class
+--]]
+
+
+--[[
+Create a new Instance of Render
+
+Returns
+-------
+Render
+    Returns A Render Instance 
+--]]
 function Render:new()
     local o = setmetatable({}, { __index = Render })
     o.objects = {}
     return o
 end
 
---- Adds an object to the render list.
---- 
---- Parameters
---- object - The object to be added to the render list. The object should have update()
---- and draw() methods.
---- 
---- Attributes
---- self - The Render instance containing the list of objects to render.
---- 
---- Returns
---- The last object in the render list after adding the new object.
---- 
+
+--[[
+Add Object for Rendering
+
+Parameters
+----------
+object : object
+    Add a Object with Included Update / Draw Function
+
+Attributes
+----------
+objects : table
+    List / Table of Objects
+
+Returns
+-------
+objects : table
+    List / Table of Objects
+
+--]]
 function Render:add(object)
     table.insert(self.objects, object)
     return self.objects[#self.objects]
 end
 
---- Removes an object from the render list.
---- 
---- Parameters
---- object - The object to be removed from the render list.
----
---- Attributes
---- self - The Render instance containing the list of objects to render.
---- 
---- Returns
---- The last object in the render list after removing the specified object.
---- 
+
+--[[
+Remove Object for Rendering
+
+Parameters
+----------
+object : object
+    Remove a Object with Included Update / Draw Function
+
+Attributes
+----------
+object : table
+    List / Table of Objects
+
+Returns
+-------
+objects : table
+    List / Table of Objects
+--]]
 function Render:remove(object)
     for i, obj in ipairs(self.objects) do
         if object == obj then
@@ -67,22 +96,30 @@ function Render:remove(object)
     return self.objects[#self.objects]
 end
 
---- Updates all objects in the render list.
---- 
---- Attributes
---- self - The Render instance containing the list of objects to render.
---- 
+
+--[[
+Update Objects with Included Update Function
+
+Attributes
+----------
+objects : table
+    List / Table of Objects
+--]]
 function Render:update()
     for _, object in ipairs(self.objects) do
         object:update()
     end
 end
 
---- Draws all objects in the render list.
---- 
---- Attributes
---- self - The Render instance containing the list of objects to render.
---- 
+--[[
+Draw Object with Included Draw Function
+
+Attributes
+----------
+objects : table
+    List / Table of Objects
+
+--]]
 function Render:draw()
     for _, object in ipairs(self.objects) do
         object:draw()

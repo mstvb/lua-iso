@@ -1,83 +1,122 @@
 local love = require("love")
 Input = {}
 
---- @class Input
---- The Input class allows you to bind functions to specific keys and check for key presses in the update loop.
----
---- Attributes
---- self - The Input instance containing the key-action mappings.
---- 
---- Methods
---- addAction(key: string, action: function)
---- replaceKey(oldKey: string, newKey: string)
---- getAction(key: string): function
---- update()
----
---- Example Usage
---- local input = Input:new()
---- input:addAction("space", function() print("Space key pressed!") end)
---- function love.update(dt)
----     input:update()
---- end
+--[[
+Input Class for Input Management
 
---- Creates a new Input instance.
----
---- Attributes
---- self - The Input instance containing the key-action mappings.
---- key: string - The key to bind the action to.
---- action: function - The function to execute when the key is pressed.
----
---- Returns
---- Input - A new instance of the Input class.
----
+Attributes
+----------
+[key : string] : function
+    Table Included Keys with Function
+
+Methods
+-------
+new()
+    Create new Instance of Input
+add_action(key : string, action : function)
+    Add Function was executed when Key is pressed
+replace_key(old_key : string, new_key : string)
+    Replace a Key and Save Function to New Key
+get_action()
+    Returns Function from Key when exists else False
+update()
+    Update every Key from Input
+    
+Returns
+-------
+Input
+    Returns a Instance of Input Class
+--]]
+
+
+--[[
+Create a New Instance of Input
+
+Returns
+-------
+Input
+    Returns a Input Instance
+--]]
 function Input:new()
     local o = {}
     setmetatable(o, { __index = Input })
     return o
 end
 
---- Adds a new action to the input system.
---- 
---- Parameters
---- key: string - The key to bind the action to.
---- action: function - The function to execute when the key is pressed.
---- 
---- Attributes
---- self - The Input instance containing the key-action mappings.
---- 
-function Input:addAction(key, action)
+--[[
+Add Action with Key | Function
+
+Parameters
+----------
+key : string
+    Key to Press
+action : function
+    Function to execute when Key pressed
+
+Attributes
+----------
+[key : string] : function
+    Table Included Keys with Function
+
+Returns
+-------
+action
+    Returns Function from new Action
+--]]
+function Input:add_action(key, action)
     self[key] = action
+    return self[key]
 end
 
---- Replaces an existing key binding with a new key.
----
---- Parameters
---- oldKey: string - The key to be replaced.
---- newKey: string - The new key to bind the action to.
----
---- Attributes
---- self - The Input instance containing the key-action mappings.
----
-function Input:replaceKey(oldKey, newKey)
-    if self[oldKey] then
-        self[newKey] = self[oldKey]
-        self[oldKey] = nil
+--[[
+Replace Key with Function included
+
+Parameters
+----------
+old_key : string
+    Key before has Replaced
+new_key : string
+    New Key
+
+Attributes
+----------
+[key : string] : function
+    Table Included Keys with Function
+
+Returns
+-------
+action
+    Returns Function from replaced Key when successfully else False
+--]]
+function Input:replace_key(old_key, new_key)
+    if self[old_key] then
+        self[new_key] = self[old_key]
+        self[old_key] = nil
+        return self[new_key]
+    else
+        return false
     end
 end
 
---- Retrieves the action associated with a specific key.
----
---- Parameters
---- key: string - The key to retrieve the action for.
----
---- Attributes
---- self - The Input instance containing the key-action mappings.
----
---- Returns
---- function - The action associated with the specified key, or nil if no action is bound to
---- the key.
----
-function Input:getAction(key)
+--[[
+Get Action
+
+Parameters
+----------
+key : string
+    Key from Action
+
+Attributes
+----------
+[key : string] : function
+    Table Included Keys with Funtion
+
+Returns
+-------
+action
+    Returns Function from Key when exists else False
+--]]
+function Input:get_action(key)
     if self[key] then
         return self[key]
     else
@@ -85,12 +124,14 @@ function Input:getAction(key)
     end
 end
 
---- Updates the input system by checking for key presses and executing the associated actions.
----
---- Attributes
---- key: string - The key to check for presses.
---- action: function - The function to execute when the key is pressed.
----
+--[[
+Update Keys
+
+Attributes
+----------
+[key : string] : function
+    Table Included Keys with Function
+--]]
 function Input:update()
     for key, action in pairs(self) do
         if love.keyboard.isDown(key) then
