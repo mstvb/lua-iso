@@ -25,8 +25,8 @@ Render = {}
 --- 
 function Render:new()
     local o = setmetatable({}, { __index = Render })
-    self.objects = {}
-    return self
+    o.objects = {}
+    return o
 end
 
 --- Adds an object to the render list.
