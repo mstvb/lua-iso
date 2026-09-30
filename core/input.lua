@@ -78,7 +78,11 @@ end
 --- the key.
 ---
 function Input:getAction(key)
-    return self[key]
+    if self[key] then
+        return self[key]
+    else
+        return false
+    end
 end
 
 --- Updates the input system by checking for key presses and executing the associated actions.
