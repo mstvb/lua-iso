@@ -65,12 +65,12 @@ function love.load()
     end
 
     -- Camera controls
-    input:addAction('w', function() cam:set_position(0, -5) end)
-    input:addAction('s', function() cam:set_position(0, 5) end)
-    input:addAction('a', function() cam:set_position(-5, 0) end)
-    input:addAction('d', function() cam:set_position(5, 0) end)
+    input:addAction('w', function() cam:move(0, -5) end)
+    input:addAction('s', function() cam:move(0, 5) end)
+    input:addAction('a', function() cam:move(-5, 0) end)
+    input:addAction('d', function() cam:move(5, 0) end)
     input:addAction('+', function() cam:set_scale(cam.scale + 0.01) end)
-    input:addAction('-', function() cam:setScale(cam.scale - 0.01) end)
+    input:addAction('-', function() cam:set_scale(cam.scale - 0.01) end)
 
     -- Reset balls
     input:addAction('r', function()

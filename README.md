@@ -1,14 +1,13 @@
 # lua-iso
 
-Isometric Game Library for @fm-labs
+Isometric 2.5D Library
 
 ## Table of Contents
 
 - [Dependencies](#dependencies)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Project Links](#project-links)
-- [Authors](#authors)
+- [Author](#author)
 
 ## Dependencies
 
@@ -22,19 +21,13 @@ Isometric Game Library for @fm-labs
 
 2. Clone Repository
 
-## Usage
-
-- Copy a Demo from `/demos` in `main.lua`
-
-- Run `love .`
-
 ## Project Links
 
 > lua-iso
 * [Project Site](https://github.com/mstvb/lua-iso)
 * [Issues](https://github.com/mstvb/lua-iso/issues)
 
-## Authors
+## Author
 
 > Manuel Staufer (mstvb)
 * [Github](https://github.com/mstvb)

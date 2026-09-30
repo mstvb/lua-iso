@@ -145,6 +145,27 @@ function Camera:set_pos(x, y)
 end
 
 --[[
+Move Camera Position
+
+Parameters
+----------
+dx : float
+    Change Position X from Camera
+dy : float
+    Change Position Y from Camera   
+
+Returns
+-------
+x, y : float
+    Returns X and Y Position from Camera
+--]]
+function Camera:move(dx, dy)
+    self.x = self.x + dx
+    self.y = self.y + dy
+    return self.x, self.y
+end
+
+--[[
 Set Scale from Camera
 
 Parameters
